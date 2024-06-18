@@ -1,7 +1,7 @@
 @extends('template.auth')
 @section('content')
     <p class="fs-3 text-center fw-bolder">Welcome</p>
-    <form id="subscriptionForm" action="{{ route('login.authenticate') }}" method="POST" class="form">
+    <form id="" action="{{ route('login.authenticate') }}" method="POST" class="form">
         @csrf
         <label class="mb-1 label">Email</label>
         <input id="email" type="text" class=" form-control" name="email" value="{{ old('email') }}" required

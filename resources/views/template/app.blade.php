@@ -183,7 +183,8 @@
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('datatables/bootstrap.datatables.js') }}"></script>
-    <script>
+
+<script>
         document.addEventListener('DOMContentLoaded', function() {
             const sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
             // const menuLinks = document.querySelectorAll('.menu');

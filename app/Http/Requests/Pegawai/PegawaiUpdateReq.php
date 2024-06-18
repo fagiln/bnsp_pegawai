@@ -25,6 +25,7 @@ class PegawaiUpdateReq extends FormRequest
             'nip' => 'required|string|max:18',
             'first_name' => 'required|string|max:10',
             'last_name' => 'nullable|string|max:10',
+            'jk' => 'required|in:L,P',
             'alamat' => 'required|string',
             'no_hp' => 'required|regex:/^[0-9]+$/|digits_between:10,13',
         ];

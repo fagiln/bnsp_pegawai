@@ -24,6 +24,7 @@ class PegawaiStoreReq extends FormRequest
         return [
             'nip' => 'required|string|unique:pegawai,nip',
             'first_name' => 'required|string|max:10',
+            'jk' => 'required|in:L,P',
             'last_name' => 'nullable|string|max:10',
             'alamat' => 'required|string',
             'no_hp' => 'required|regex:/^[0-9]+$/|digits_between:10,13',

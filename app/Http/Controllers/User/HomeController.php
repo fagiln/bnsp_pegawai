@@ -13,8 +13,10 @@ class HomeController extends Controller
 {
     public function home()
     {
-       $totalPegawai = Pegawai::count();
-        return view('pegawai.dashboard',compact('totalPegawai'));
+        $perempuan = Pegawai::where('jk','=' , 'P')->count();
+        $lakilaki = Pegawai::where('jk','=','L')->count();
+
+        return view('pegawai.dashboard', compact('perempuan','lakilaki' ));
     }
     public function list(PegawaiDataTable $dataTable)
     {
@@ -24,7 +26,7 @@ class HomeController extends Controller
     {
         $data = $request->validated();
         Pegawai::create($data);
-        return redirect(route('home'))->with(['status' => 'Tambah Pegawai Berhasil']);
+        return redirect(route('list.employee'))->with(['status' => 'Tambah Pegawai Berhasil']);
     }
     public function show()
     {
@@ -40,7 +42,7 @@ class HomeController extends Controller
         $data = $request->validated();
         $pegawai = Pegawai::findOrFail($id);
         $pegawai->update($data);
-        return redirect(route('home'))->with(['status' => 'Update Pegawai Berhasil']);
+        return redirect(route('list.employee'))->with(['status' => 'Update Pegawai Berhasil']);
     }
     public function destroy(string $id)
     {

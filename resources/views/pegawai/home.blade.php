@@ -12,10 +12,23 @@
     <a href="{{ route('employee.show') }}" class="btn btn-primary my-2">
         <i class="fas fa-plus fs-2"></i> Add
     </a>
-    {{ $dataTable->table() }}
+    <div class="table-responsive">
+
+        {{ $dataTable->table() }}
+    </div>
     @push('scripts')
         {{ $dataTable->scripts() }}
         <script>
+             document.addEventListener('DOMContentLoaded', function() {
+                var alert = document.getElementById('success-alert');
+                if (alert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(alert);
+                        bootstrapAlert.close();
+                    }, 3000); // waktu dalam milidetik (5000 ms = 5 detik)
+                }
+            });
+            
             $(document).on('click', 'button[data-action="delete"]', function() {
                 var url = $(this).data('url');
                 var tableId = $(this).data('table-id');

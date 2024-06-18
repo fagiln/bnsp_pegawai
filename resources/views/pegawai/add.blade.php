@@ -27,7 +27,7 @@
 
             <div class="col-md-6">
 
-                <div class="mb-1 label">Last Name</div>
+                <div class="mb-1 mt-3 label">Last Name</div>
                 <input type="text" class=" form-control" name="last_name" value="{{ old('last_name') }}"
                     placeholder="Masukkan Nama Akhir">
                 @error('last_name')
@@ -35,16 +35,27 @@
                 @enderror
             </div>
             <div class="col-md-6">
-
-                <div class="mb-1 label">No Handphone</div>
-                <input type="number" class=" form-control" name="no_hp"  value="{{ old('no_hp') }}"
-                    placeholder="Masukkan No Hp">
-                @error('no_hp')
+                <div class="mb-1 mt-3 label">Jenis Kelamin</div>
+                <select type="text" class=" form-control" name="jk"  placeholder="Masukkan Alamat">
+                    <option value="">Masukkan Jenis Kelamin</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+                @error('jk')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
+              
             </div>
         </div>
         <div class="row ">
+            <div class="col-md-6">
+                <div class="mb-1 mt-3 label">No Handphone</div>
+                <input type="text" class=" form-control" name="no_hp"  value="{{ old('no_hp') }}"
+                    placeholder="Masukkan No Hp">
+                @error('no_hp')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror 
+            </div>
             <div class="col-md-6">
                 <div class="mb-1 mt-3 label">Alamat</div>
                 <textarea type="text" class=" form-control" name="alamat"  placeholder="Masukkan Alamat">{{ old('alamat') }}</textarea>
@@ -52,12 +63,10 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="col-md-6">
-
-                <button type="submit" class="mt-5 btn btn-primary">Add Employee</button>
-            </div>
         </div>
         <div class="modal-footer">
+            <button type="submit" class="mt-5 btn btn-primary">Add Employee</button>
+
             <a href="{{ route('home') }}" type="button" class="mt-5 btn btn-secondary">Cancel</a>
         </div>
     </form>

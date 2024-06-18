@@ -1,5 +1,5 @@
 @extends('template.app')
-@section('title', 'Dashboard')    
+@section('title', 'Dashboard')
 @section('content')
     <!-- Main content -->
     <section class="content">
@@ -10,14 +10,30 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{$totalPegawai}}</h3>
+                            <h3>{{ $perempuan }}</h3>
 
-                            <p>Total Employee</p>
+                            <p>Total Female Employees</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="ion ion-female"></i>
                         </div>
-                        <a href="{{route('list.employee')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('list.employee') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $lakilaki }}</h3>
+
+                            <p>Total Male Employees</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-male"></i>
+                        </div>
+                        <a href="{{ route('list.employee') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

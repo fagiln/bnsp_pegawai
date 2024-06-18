@@ -11,6 +11,8 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Str;
+
 
 class PegawaiDataTable extends DataTable
 {
@@ -26,7 +28,15 @@ class PegawaiDataTable extends DataTable
             ->addColumn('action', function (Pegawai $pegawai) {
                 return view('pegawai.action', compact('pegawai'));
             })
-            ->rawColumns(['action'])
+            ->editColumn('jk', function (Pegawai $pegawai) {
+                if ($pegawai->jk == 'L') {
+                    return 'Laki-laki';
+                }
+                return 'Perempuan';
+            })->editColumn('alamat', function (Pegawai $pegawai) {
+                return '<span>' . Str::limit($pegawai->alamat, 10, '..') . '</span>';
+            })
+            ->rawColumns(['action', 'alamat'])
             ->setRowId('id');
     }
 
@@ -70,9 +80,10 @@ class PegawaiDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('id'),
-            Column::make('nip'),
+            Column::make('nip')->title('NIP'),
             Column::make('first_name'),
             Column::make('last_name'),
+            Column::make('jk')->title('Jenis Kelamin'),
             Column::make('alamat'),
             Column::make('created_at'),
             Column::make('updated_at'),

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('first_name', 10);
             $table->text('alamat')->nullable();
             $table->string('no_hp', 13)->nullable();
+            $table->enum('jk',['L', 'P']);
             $table->string('last_name', 10)->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
