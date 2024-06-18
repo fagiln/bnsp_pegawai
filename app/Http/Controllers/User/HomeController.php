@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(PegawaiDataTable $dataTable)
+    public function home()
+    {
+       $totalPegawai = Pegawai::count();
+        return view('pegawai.dashboard',compact('totalPegawai'));
+    }
+    public function list(PegawaiDataTable $dataTable)
     {
         return $dataTable->render('pegawai.home');
     }

@@ -94,7 +94,13 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item rounded">
-                            <a href="" class="nav-link">
+                            <a href="{{route('home')}}" class="nav-link">
+                                <i class="fas fa-home nav-icon"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item rounded">
+                            <a href="{{route('list.employee')}}" class="nav-link">
                                 <i class="fas fa-user-alt nav-icon"></i>
                                 <p>Pegawai</p>
                             </a>
@@ -137,7 +143,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <span class="text d-none d-sm-inline-block"><strong>Thrifty </strong>was made by &#10084; </span>
+            <span class="text d-none d-sm-inline-block"><strong>This </strong>was made by &#10084; </span>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Beta Version</b> 1.0.0
             </div>

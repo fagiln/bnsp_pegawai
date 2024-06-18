@@ -15,16 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
     Route::get('login', [AuthController::class, 'index'])->name('login');
     Route::post('login', [AuthController::class, 'authenticate'])->name('login.authenticate');
 });
 Route::middleware('auth')->group(function(){
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('home', [HomeController::class, 'home'])->name('home');
+    Route::get('list-employee', [HomeController::class, 'list'])->name('list.employee');
     Route::get('add-employee', [HomeController::class, 'show'])->name('employee.show');
     Route::post('add-employee', [HomeController::class, 'store'])->name('employee.store');
     Route::get('edit-employee/{id}/edit', [HomeController::class, 'edit'])->name('employee.edit');
