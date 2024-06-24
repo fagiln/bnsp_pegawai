@@ -12,6 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 
 class PegawaiDataTable extends DataTable
@@ -28,6 +29,9 @@ class PegawaiDataTable extends DataTable
             ->addColumn('action', function (Pegawai $pegawai) {
                 return view('pegawai.action', compact('pegawai'));
             })
+            ->addColumn('DT_RowIndex', function ($row) {
+                return $row->DT_RowIndex;
+            })
             ->editColumn('jk', function (Pegawai $pegawai) {
                 if ($pegawai->jk == 'L') {
                     return 'Laki-laki';
@@ -35,6 +39,11 @@ class PegawaiDataTable extends DataTable
                 return 'Perempuan';
             })->editColumn('alamat', function (Pegawai $pegawai) {
                 return '<span>' . Str::limit($pegawai->alamat, 10, '..') . '</span>';
+            })
+            ->editColumn('created_at', function (Pegawai $pegawai) {
+                return Carbon::parse($pegawai->created_at)->format('d-m-Y');
+            })->editColumn('updated_at', function (Pegawai $pegawai) {
+                return Carbon::parse($pegawai->updated_at)->format('d-m-Y');
             })
             ->rawColumns(['action', 'alamat'])
             ->setRowId('id');
@@ -79,7 +88,12 @@ class PegawaiDataTable extends DataTable
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('id'),
+            Column::computed('DT_RowIndex')
+                ->title('No')
+                ->searchable(false)
+                ->orderable(false)
+                ->width(30)
+                ->addClass('text-center'),
             Column::make('nip')->title('NIP'),
             Column::make('first_name'),
             Column::make('last_name'),

@@ -19,7 +19,19 @@
     @push('scripts')
         {{ $dataTable->scripts() }}
         <script>
-             document.addEventListener('DOMContentLoaded', function() {
+            $(document).ready(function() {
+                var table = $('#pegawai-table').DataTable();
+                table.on('draw.dt', function() {
+                    var PageInfo = table.page.info();
+                    table.column(1, {
+                        page: 'current'
+                    }).nodes().each(function(cell, i) {
+                        cell.innerHTML = i + 1 + PageInfo.start;
+                    });
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
                 var alert = document.getElementById('success-alert');
                 if (alert) {
                     setTimeout(function() {
@@ -28,7 +40,7 @@
                     }, 3000); // waktu dalam milidetik (5000 ms = 5 detik)
                 }
             });
-            
+
             $(document).on('click', 'button[data-action="delete"]', function() {
                 var url = $(this).data('url');
                 var tableId = $(this).data('table-id');
